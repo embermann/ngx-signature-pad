@@ -3,5 +3,49 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ngx-signature-pad": {
+      "projectType": "library",
+      "root": "projects/ngx-signature-pad",
+      "sourceRoot": "projects/ngx-signature-pad/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-signature-pad/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-signature-pad/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-signature-pad/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-signature-pad/src/test.ts",
+            "tsConfig": "projects/ngx-signature-pad/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-signature-pad/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-signature-pad/**/*.ts",
+              "projects/ngx-signature-pad/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-signature-pad",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
